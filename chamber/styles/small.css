@@ -203,3 +203,10 @@ footer {
   background-color: #333;
   color: #ffffff;
 }
+.navigation a {
+    color: black;
+}
+
+.dark-mode .navigation a {
+    color: white;
+}
