@@ -82,3 +82,33 @@ async function loadSpotlights() {
 }
 
 loadSpotlights();
+fetch("data/members.json")
+  .then(response => response.json())
+  .then(members => {
+
+    const qualified = members.filter(m =>
+      m.membership === "gold" || m.membership === "silver"
+    );
+
+    const shuffled = qualified.sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, 3);
+
+    const container = document.querySelector("#spotlights");
+
+    container.innerHTML = ""; // IMPORTANT (prevents duplicates)
+
+    selected.forEach(member => {
+      const card = document.createElement("div");
+      card.classList.add("member");
+
+      card.innerHTML = `
+        <h3>${member.name}</h3>
+        <img src="${member.image}" alt="${member.name}">
+        <p>${member.phone}</p>
+        <p><strong>${member.membership}</strong></p>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(error => console.error("Error loading members:", error));
