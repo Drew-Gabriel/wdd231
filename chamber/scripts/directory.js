@@ -1,60 +1,68 @@
 console.log("directory.js is working");
 
-const membersContainer = document.querySelector('#members');
+const membersContainer = document.querySelector("#members");
+const gridBtn = document.querySelector("#gridBtn");
+const listBtn = document.querySelector("#listBtn");
+const modeBtn = document.querySelector("#modeBtn");
 
-const gridBtn = document.querySelector('#gridBtn');
-const listBtn = document.querySelector('#listBtn');
-
-const modeBtn = document.querySelector('#modeBtn');
-
+// Load members
 async function getMembers() {
+  try {
+    const response = await fetch("data/members.json");
+    const members = await response.json();
 
-  const response = await fetch('data/members.json');
+    membersContainer.innerHTML = "";
 
-  const data = await response.json();
+    members.forEach(member => {
+      const card = document.createElement("div");
 
-  displayMembers(data);
-}
+      card.classList.add("member");
 
-function displayMembers(members) {
+      card.innerHTML = `
+        <img src="${member.image}" alt="${member.name}">
+        <h3>${member.name}</h3>
+        <p>${member.address}</p>
+        <p>${member.phone}</p>
+        <p>${member.website}</p>
+        <p><strong>Membership:</strong> ${member.membership}</p>
+      `;
 
-  members.forEach(member => {
+      membersContainer.appendChild(card);
+    });
 
-    const card = document.createElement("div");
-    card.classList.add("member");
-
-    card.innerHTML = `
-      <img src="${member.image}" alt="${member.name}">
-      <h3>${member.name}</h3>
-      <p>${member.phone}</p>
-      <p>${member.website}</p>
-      <p><strong>Membership:</strong> ${member.membership}</p>
-    `;
-
-    membersContainer.appendChild(card);
-
-  });
-
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 getMembers();
 
-gridBtn.addEventListener('click', () => {
-  membersContainer.classList.add('grid');
-  membersContainer.classList.remove('list');
-});
+// Grid view
+if (gridBtn) {
+  gridBtn.addEventListener("click", () => {
+    membersContainer.classList.add("grid");
+    membersContainer.classList.remove("list");
+  });
+}
 
-listBtn.addEventListener('click', () => {
-  membersContainer.classList.add('list');
-  membersContainer.classList.remove('grid');
-});
+// List view
+if (listBtn) {
+  listBtn.addEventListener("click", () => {
+    membersContainer.classList.add("list");
+    membersContainer.classList.remove("grid");
+  });
+}
 
-modeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
+// Dark mode
+if (modeBtn) {
+  modeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+}
 
-document.querySelector('#currentyear').textContent =
+// Footer
+document.querySelector("#currentyear").textContent =
 new Date().getFullYear();
 
-document.querySelector('#lastModified').textContent =
+document.querySelector("#lastModified").textContent =
 `Last Modified: ${document.lastModified}`;
