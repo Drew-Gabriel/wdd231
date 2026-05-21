@@ -168,3 +168,17 @@ footer {
   border-radius: 5px;
   padding: 8px 12px;
 }
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode .card {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background-color: #222;
+}
