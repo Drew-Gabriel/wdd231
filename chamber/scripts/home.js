@@ -1,81 +1,107 @@
-console.log("home.js is working");
+// ==========================
+// FOOTER YEAR
+// ==========================
 const yearSpan = document.getElementById("currentyear");
 if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
+yearSpan.textContent = new Date().getFullYear();
 }
-const lastModified = document.getElementById("lastModified");
-if (lastModified) {
-  lastModified.textContent = `Last Modified: ${document.lastModified}`;
-}
+
+// ==========================
+// WEATHER (MOCK DATA - SAFE FOR SCHOOL PROJECT)
+// ==========================
 const weatherContainer = document.getElementById("weather");
 
 function loadWeather() {
-  if (!weatherContainer) return;
+if (!weatherContainer) return;
 
-  const weather = {
-    temp: 30,
-    condition: "Partly Cloudy",
-    high: 33,
-    low: 24,
-    humidity: 60
-  };
+// You can replace this later with real API (OpenWeatherMap)
+const weather = {
+temp: 30,
+condition: "Partly Cloudy",
+high: 33,
+low: 24,
+humidity: 60
+};
 
-  weatherContainer.innerHTML = `
-    <p><strong>${weather.temp}°C</strong></p>
-    <p>${weather.condition}</p>
-    <p>High: ${weather.high}°</p>
-    <p>Low: ${weather.low}°</p>
-    <p>Humidity: ${weather.humidity}%</p>
-  `;
+weatherContainer.innerHTML =   <p><strong>${weather.temp}°C</strong></p>   <p>${weather.condition}</p>   <p>High: ${weather.high}°</p>   <p>Low: ${weather.low}°</p>   <p>Humidity: ${weather.humidity}%</p>  ;
 }
 
 loadWeather();
+
+// ==========================
+// MEMBER SPOTLIGHTS
+// ==========================
 const spotlightContainer = document.getElementById("spotlights");
 
 async function loadSpotlights() {
-  if (!spotlightContainer) return;
+if (!spotlightContainer) return;
 
-  try {
-    const response = await fetch("data/members.json");
+try {
+const response = await fetch("data/members.json");
 
-    if (!response.ok) {
-      throw new Error("Failed to load members.json");
-    }
+if (!response.ok) {  
+  throw new Error("Failed to load members.json");  
+}  
 
-    const members = await response.json();
+const members = await response.json();  
 
-    // filter GOLD & SILVER (case-safe)
-    const eligibleMembers = members.filter(member => {
-      return member.membership.toLowerCase() === "gold" ||
-             member.membership.toLowerCase() === "silver";
-    });
+// Filter Gold + Silver members only  
+const eligibleMembers = members.filter(member =>  
+  member.membership === "Gold" || member.membership === "Silver"  
+);  
 
-    // shuffle
-    eligibleMembers.sort(() => Math.random() - 0.5);
+// Shuffle array  
+eligibleMembers.sort(() => Math.random() - 0.5);  
 
-    // pick 2–3
-    const selected = eligibleMembers.slice(0, 3);
+// Pick 3 members  
+const selected = eligibleMembers.slice(0, 3);  
 
-    spotlightContainer.innerHTML = "";
+// Display  
+spotlightContainer.innerHTML = selected.map(member => `  
+  <div class="card spotlight">  
+    <h3>${member.name}</h3>  
+    <p>${member.address}</p>  
+    <p>${member.phone}</p>  
+    <p><a href="${member.website}" target="_blank">Visit Website</a></p>  
+    <p><strong>${member.membership} Member</strong></p>  
+  </div>  
+`).join("");
 
-    selected.forEach(member => {
-      const card = document.createElement("div");
-      card.classList.add("member");
-
-      card.innerHTML = `
-        <h3>${member.name}</h3>
-        <img src="${member.image}" alt="${member.name}">
-        <p>${member.phone}</p>
-        <p><strong>${member.membership}</strong></p>
-      `;
-
-      spotlightContainer.appendChild(card);
-    });
-
-  } catch (error) {
-    console.error("Spotlight error:", error);
-    spotlightContainer.innerHTML = "<p>Spotlights unavailable</p>";
-  }
+} catch (error) {
+spotlightContainer.innerHTML = "<p>Spotlights unavailable</p>";
+console.error(error);
+}
 }
 
 loadSpotlights();
+fetch("data/members.json")
+.then(response => response.json())
+.then(members => {
+
+const qualified = members.filter(m =>  
+  m.membership === "gold" || m.membership === "silver"  
+);  
+
+const shuffled = qualified.sort(() => Math.random() - 0.5);  
+const selected = shuffled.slice(0, 3);  
+
+const container = document.querySelector("#spotlights");  
+
+container.innerHTML = ""; // IMPORTANT (prevents duplicates)  
+
+selected.forEach(member => {  
+  const card = document.createElement("div");  
+  card.classList.add("member");  
+
+  card.innerHTML = `  
+    <h3>${member.name}</h3>  
+    <img src="${member.image}" alt="${member.name}">  
+    <p>${member.phone}</p>  
+    <p><strong>${member.membership}</strong></p>  
+  `;  
+
+  container.appendChild(card);  
+});
+
+})
+.catch(error => console.error("Error loading members:", error));
