@@ -1,4 +1,4 @@
-console.log("directory.js is working");
+console.log("JS IS WORKING");
 
 const membersContainer = document.querySelector("#members");
 const gridBtn = document.querySelector("#gridBtn");
