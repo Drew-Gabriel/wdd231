@@ -1,80 +1,34 @@
-console.log("home.js is working");
+console.log("home.js working");
 
-// ==========================
-// FOOTER YEAR
-// ==========================
-const yearSpan = document.getElementById("currentyear");
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+fetch("data/members.json")
+  .then(res => res.json())
+  .then(data => {
+    const spot = document.querySelector("#spotlights");
 
-// ==========================
-// LAST MODIFIED
-// ==========================
-const lastModified = document.getElementById("lastModified");
-if (lastModified) {
-  lastModified.textContent = `Last Modified: ${document.lastModified}`;
-}
+    if (!spot) return;
 
-// ==========================
-// WEATHER (MOCK)
-// ==========================
-const weatherContainer = document.getElementById("weather");
-
-if (weatherContainer) {
-  weatherContainer.innerHTML = `
-    <p><strong>30°C</strong></p>
-    <p>Partly Cloudy</p>
-    <p>High: 33°C</p>
-    <p>Low: 24°C</p>
-    <p>Humidity: 60%</p>
-  `;
-}
-
-// ==========================
-// MEMBER SPOTLIGHTS (SAFE VERSION)
-// ==========================
-const spotlightContainer = document.getElementById("spotlights");
-
-async function loadSpotlights() {
-  if (!spotlightContainer) return;
-
-  try {
-    const response = await fetch("data/members.json");
-
-    const members = await response.json();
-
-    // ONLY gold/silver
-    const eligible = members.filter(m =>
-      m.membership &&
-      (m.membership.toLowerCase() === "gold" ||
-       m.membership.toLowerCase() === "silver")
+    const filtered = data.filter(m =>
+      m.membership.toLowerCase() === "gold" ||
+      m.membership.toLowerCase() === "silver"
     );
 
-    eligible.sort(() => Math.random() - 0.5);
+    filtered.sort(() => Math.random() - 0.5);
 
-    const selected = eligible.slice(0, 3);
+    const selected = filtered.slice(0, 3);
 
-    spotlightContainer.innerHTML = "";
+    spot.innerHTML = "";
 
-    selected.forEach(member => {
-      const card = document.createElement("div");
-      card.classList.add("member");
+    selected.forEach(m => {
+      const div = document.createElement("div");
+      div.classList.add("member");
 
-      card.innerHTML = `
-        <h3>${member.name}</h3>
-        <img src="${member.image}" alt="${member.name}">
-        <p>${member.phone}</p>
-        <p><strong>${member.membership}</strong></p>
+      div.innerHTML = `
+        <h3>${m.name}</h3>
+        <img src="${m.image}" alt="${m.name}">
+        <p>${m.phone}</p>
+        <p><strong>${m.membership}</strong></p>
       `;
 
-      spotlightContainer.appendChild(card);
+      spot.appendChild(div);
     });
-
-  } catch (err) {
-    console.error("Spotlight error:", err);
-    spotlightContainer.innerHTML = "<p>Spotlights unavailable</p>";
-  }
-}
-
-loadSpotlights();
+  });
