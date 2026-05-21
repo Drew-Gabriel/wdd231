@@ -5,7 +5,7 @@
     "phone": "+2348011111111",
     "website": "https://gabtech.com",
     "image": "images/business1.jpg",
-    "membership": 3,
+    "membership": "gold"
     "description": "Technology and software solutions company."
   },
 
@@ -15,7 +15,7 @@
     "phone": "+2348022222222",
     "website": "https://aduwawamarket.com",
     "image": "images/business2.jpg",
-    "membership": 2,
+    "membership": "silver"
     "description": "Retail and wholesale business center."
   },
 
@@ -25,7 +25,7 @@
     "phone": "+2348033333333",
     "website": "https://bensonelectronics.com",
     "image": "images/business3.jpg",
-    "membership": 1,
+    "membership": "gold"
     "description": "Electronics and gadgets store."
   },
 
@@ -35,7 +35,7 @@
     "phone": "+2348044444444",
     "website": "https://royaltaste.com",
     "image": "images/business4.jpg",
-    "membership": 2,
+    "membership": "gold"
     "description": "Local and continental dishes restaurant."
   },
 
@@ -45,7 +45,7 @@
     "phone": "+2348055555555",
     "website": "https://beninfashion.com",
     "image": "images/business5.jpg",
-    "membership": 3,
+    "membership": "gold"
     "description": "Fashion design and clothing brand."
   },
 
@@ -55,7 +55,7 @@
     "phone": "+2348066666666",
     "website": "https://edoautorepairs.com",
     "image": "images/business6.jpg",
-    "membership": 1,
+    "membership":"silver"
     "description": "Automobile servicing and maintenance."
   },
 
@@ -65,7 +65,7 @@
     "phone": "+2348077777777",
     "website": "https://sunrisepharmacy.com",
     "image": "images/business7.jpg",
-    "membership": 2,
+    "membership": "silver"
     "description": "Healthcare and pharmaceutical services."
   }
 ]
