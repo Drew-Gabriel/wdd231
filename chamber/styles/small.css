@@ -100,8 +100,8 @@ main {
 }
 
 .card h3 {
-  background: #333;
-  color: white;
+  background: var(--secondary-color);
+  color: var(--text-color);
   padding: 0.5rem;
   margin-top: 0;
 }
