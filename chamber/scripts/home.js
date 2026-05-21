@@ -1,24 +1,12 @@
 console.log("home.js is working");
-
-// ==========================
-// FOOTER YEAR
-// ==========================
 const yearSpan = document.getElementById("currentyear");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
-
-// ==========================
-// LAST MODIFIED
-// ==========================
 const lastModified = document.getElementById("lastModified");
 if (lastModified) {
   lastModified.textContent = `Last Modified: ${document.lastModified}`;
 }
-
-// ==========================
-// WEATHER (MOCK DATA)
-// ==========================
 const weatherContainer = document.getElementById("weather");
 
 function loadWeather() {
@@ -42,10 +30,6 @@ function loadWeather() {
 }
 
 loadWeather();
-
-// ==========================
-// MEMBER SPOTLIGHTS (FIXED)
-// ==========================
 const spotlightContainer = document.getElementById("spotlights");
 
 async function loadSpotlights() {
