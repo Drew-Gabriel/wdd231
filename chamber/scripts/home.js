@@ -1,3 +1,5 @@
+console.log("home.js is working");
+
 // ==========================
 // FOOTER YEAR
 // ==========================
@@ -6,16 +8,22 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+// ==========================
+// LAST MODIFIED
+// ==========================
+const lastModified = document.getElementById("lastModified");
+if (lastModified) {
+  lastModified.textContent = `Last Modified: ${document.lastModified}`;
+}
 
 // ==========================
-// WEATHER (MOCK DATA - SAFE FOR SCHOOL PROJECT)
+// WEATHER (MOCK DATA)
 // ==========================
 const weatherContainer = document.getElementById("weather");
 
 function loadWeather() {
   if (!weatherContainer) return;
 
-  // You can replace this later with real API (OpenWeatherMap)
   const weather = {
     temp: 30,
     condition: "Partly Cloudy",
@@ -35,9 +43,8 @@ function loadWeather() {
 
 loadWeather();
 
-
 // ==========================
-// MEMBER SPOTLIGHTS
+// MEMBER SPOTLIGHTS (FIXED)
 // ==========================
 const spotlightContainer = document.getElementById("spotlights");
 
@@ -53,49 +60,19 @@ async function loadSpotlights() {
 
     const members = await response.json();
 
-    // Filter Gold + Silver members only
-    const eligibleMembers = members.filter(member =>
-      member.membership === "Gold" || member.membership === "Silver"
-    );
+    // filter GOLD & SILVER (case-safe)
+    const eligibleMembers = members.filter(member => {
+      return member.membership.toLowerCase() === "gold" ||
+             member.membership.toLowerCase() === "silver";
+    });
 
-    // Shuffle array
+    // shuffle
     eligibleMembers.sort(() => Math.random() - 0.5);
 
-    // Pick 3 members
+    // pick 2–3
     const selected = eligibleMembers.slice(0, 3);
 
-    // Display
-    spotlightContainer.innerHTML = selected.map(member => `
-      <div class="card spotlight">
-        <h3>${member.name}</h3>
-        <p>${member.address}</p>
-        <p>${member.phone}</p>
-        <p><a href="${member.website}" target="_blank">Visit Website</a></p>
-        <p><strong>${member.membership} Member</strong></p>
-      </div>
-    `).join("");
-
-  } catch (error) {
-    spotlightContainer.innerHTML = "<p>Spotlights unavailable</p>";
-    console.error(error);
-  }
-}
-
-loadSpotlights();
-fetch("data/members.json")
-  .then(response => response.json())
-  .then(members => {
-
-    const qualified = members.filter(m =>
-      m.membership === "gold" || m.membership === "silver"
-    );
-
-    const shuffled = qualified.sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, 3);
-
-    const container = document.querySelector("#spotlights");
-
-    container.innerHTML = ""; // IMPORTANT (prevents duplicates)
+    spotlightContainer.innerHTML = "";
 
     selected.forEach(member => {
       const card = document.createElement("div");
@@ -108,7 +85,13 @@ fetch("data/members.json")
         <p><strong>${member.membership}</strong></p>
       `;
 
-      container.appendChild(card);
+      spotlightContainer.appendChild(card);
     });
-  })
-  .catch(error => console.error("Error loading members:", error));
+
+  } catch (error) {
+    console.error("Spotlight error:", error);
+    spotlightContainer.innerHTML = "<p>Spotlights unavailable</p>";
+  }
+}
+
+loadSpotlights();
