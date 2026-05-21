@@ -180,16 +180,26 @@ footer {
   padding: 8px 12px;
 }
 .dark-mode {
-    background-color: black;
-    color: white;
-}
-
-.dark-mode .card {
-    background-color: #333;
-    color: white;
+  background-color: #121212;
+  color: #ffffff;
 }
 
 .dark-mode header,
 .dark-mode footer {
-    background-color: #222;
+  background-color: #1e1e1e;
+}
+
+.dark-mode .card,
+.dark-mode .member {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.dark-mode a {
+  color: #ffffff;
+}
+
+.card h3 {
+  background-color: #333;
+  color: #ffffff;
 }
