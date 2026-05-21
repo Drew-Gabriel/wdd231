@@ -156,3 +156,9 @@ footer {
   background: var(--primary-color);
   padding: 2rem;
 }
+.active {
+  background: #333;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
