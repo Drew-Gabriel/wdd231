@@ -1,33 +1,26 @@
 console.log("directory.js is working");
 
-const membersContainer = document.querySelector("#members");
-const gridBtn = document.querySelector("#gridBtn");
-const listBtn = document.querySelector("#listBtn");
-const modeBtn = document.querySelector("#modeBtn");
+const membersContainer = document.querySelector('#members');
 
-// Load members
+const gridBtn = document.querySelector('#gridBtn');
+const listBtn = document.querySelector('#listBtn');
+
+const modeBtn = document.querySelector('#modeBtn');
+
 async function getMembers() {
-  try {
-    const response = await fetch("data/members.json");
 
-    if (!response.ok) {
-      throw new Error("members.json not found");
-    }
+  const response = await fetch('data/members.json');
 
-    const members = await response.json();
+  const data = await response.json();
 
-    displayMembers(members);
-
-  } catch(error) {
-    console.error(error);
-  }
+  displayMembers(data);
 }
 
 function displayMembers(members) {
-  membersContainer.innerHTML = "";
 
   members.forEach(member => {
-    const card = document.createElement("section");
+
+    const card = document.createElement("div");
     card.classList.add("member");
 
     card.innerHTML = `
@@ -39,35 +32,29 @@ function displayMembers(members) {
     `;
 
     membersContainer.appendChild(card);
+
   });
+
 }
 
 getMembers();
 
-// Grid/List buttons
-gridBtn.addEventListener("click", () => {
-  membersContainer.classList.add("grid");
-  membersContainer.classList.remove("list");
+gridBtn.addEventListener('click', () => {
+  membersContainer.classList.add('grid');
+  membersContainer.classList.remove('list');
 });
 
-listBtn.addEventListener("click", () => {
-  membersContainer.classList.add("list");
-  membersContainer.classList.remove("grid");
+listBtn.addEventListener('click', () => {
+  membersContainer.classList.add('list');
+  membersContainer.classList.remove('grid');
 });
 
-// Dark mode
-if (modeBtn) {
-  modeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-  });
-}
+modeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
 
-// Footer
-document.getElementById("currentyear").textContent =
+document.querySelector('#currentyear').textContent =
 new Date().getFullYear();
 
-const modified = document.getElementById("lastModified");
-if(modified){
-modified.textContent =
+document.querySelector('#lastModified').textContent =
 `Last Modified: ${document.lastModified}`;
-}
