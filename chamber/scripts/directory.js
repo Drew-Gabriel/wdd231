@@ -1,4 +1,4 @@
-console.log("JS IS WORKING");
+console.log("directory.js is working");
 
 const membersContainer = document.querySelector("#members");
 const gridBtn = document.querySelector("#gridBtn");
@@ -10,12 +10,14 @@ async function getMembers() {
     const response = await fetch("data/members.json");
     const members = await response.json();
     displayMembers(members);
-  } catch (error) {
-    console.error("Error loading members:", error);
+  } catch (err) {
+    console.error("Error loading members:", err);
   }
 }
 
 function displayMembers(members) {
+  if (!membersContainer) return;
+
   membersContainer.innerHTML = "";
 
   members.forEach(member => {
@@ -27,7 +29,7 @@ function displayMembers(members) {
       <h3>${member.name}</h3>
       <p>${member.phone}</p>
       <p>${member.website}</p>
-      <p><strong>Membership:</strong> ${member.membership}</p>
+      <p><strong>${member.membership}</strong></p>
     `;
 
     membersContainer.appendChild(card);
@@ -36,22 +38,31 @@ function displayMembers(members) {
 
 getMembers();
 
-gridBtn.addEventListener("click", () => {
-  membersContainer.classList.add("grid");
-  membersContainer.classList.remove("list");
-});
+// GRID / LIST
+if (gridBtn && listBtn) {
+  gridBtn.addEventListener("click", () => {
+    membersContainer.classList.add("grid");
+    membersContainer.classList.remove("list");
+  });
 
-listBtn.addEventListener("click", () => {
-  membersContainer.classList.add("list");
-  membersContainer.classList.remove("grid");
-});
+  listBtn.addEventListener("click", () => {
+    membersContainer.classList.add("list");
+    membersContainer.classList.remove("grid");
+  });
+}
 
-modeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
+// DARK MODE
+if (modeBtn) {
+  modeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+}
 
-document.querySelector("#currentyear").textContent =
-  new Date().getFullYear();
+// FOOTER SAFETY
+const year = document.getElementById("currentyear");
+if (year) year.textContent = new Date().getFullYear();
 
-document.querySelector("#lastModified").textContent =
-  `Last Modified: ${document.lastModified}`;
+const modified = document.getElementById("lastModified");
+if (modified) {
+  modified.textContent = `Last Modified: ${document.lastModified}`;
+}
