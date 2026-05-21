@@ -55,7 +55,6 @@ if (gridBtn && listBtn) {
 if (modeBtn) {
   modeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-    console.log("CLICKED:",
   });
 }
 
