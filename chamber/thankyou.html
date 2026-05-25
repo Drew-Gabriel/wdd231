@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Thank You | Benin City Chamber</title>
+
+<link rel="stylesheet" href="styles/normalize.css">
+<link rel="stylesheet" href="styles/small.css">
+<link rel="stylesheet" href="styles/larger.css">
+</head>
+
+<body>
+
+<header>
+<h1>Benin City Chamber of Commerce</h1>
+</header>
+
+<main>
+
+<h2>Thank You!</h2>
+
+<p>Your application has been submitted successfully.</p>
+
+<div id="results"></div>
+
+</main>
+
+<footer>
+<p>&copy; <span id="currentyear"></span></p>
+<p id="lastModified"></p>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+document.querySelector("#results").innerHTML = `
+<p><strong>First Name:</strong> ${params.get("firstname")}</p>
+
+<p><strong>Last Name:</strong> ${params.get("lastname")}</p>
+
+<p><strong>Email:</strong> ${params.get("email")}</p>
+
+<p><strong>Phone:</strong> ${params.get("phone")}</p>
+
+<p><strong>Business:</strong> ${params.get("business")}</p>
+
+<p><strong>Date:</strong> ${params.get("timestamp")}</p>
+`;
+</script>
+
+</body>
+</html>
