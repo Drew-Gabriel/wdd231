@@ -3,15 +3,24 @@
   --secondary-color: #333;
   --background: #f5f5f5;
   --text-color: #000;
+}
+
+/* DARK MODE */
+
 .dark-mode {
   background-color: #121212;
-  color: white;
+  color: #ffffff;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #1e1e1e;
 }
 
 .dark-mode .card,
 .dark-mode .member {
-  background-color: #2b2b2b;
-  color: white;
+  background-color: #2d2d2d;
+  color: #ffffff;
 }
 
 .dark-mode h1,
@@ -19,8 +28,10 @@
 .dark-mode h3,
 .dark-mode p,
 .dark-mode a {
-  color: white;
+  color: #ffffff;
 }
+
+/* BODY */
 
 body {
   font-family: Arial, sans-serif;
@@ -46,14 +57,13 @@ header {
 
 .logo-container img {
   width: 50px;
+  height: auto;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10;
 }
 
 .navigation {
@@ -70,11 +80,23 @@ nav {
   font-weight: bold;
 }
 
+.dark-mode .navigation a {
+  color: white;
+}
+
+/* ACTIVE PAGE */
+
+.active {
+  background-color: #333;
+  color: white !important;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
 /* HERO */
 
 .hero {
   position: relative;
-  z-index: 1;
 }
 
 .hero img {
@@ -108,11 +130,12 @@ main {
 .card {
   background: #ddd;
   padding: 1rem;
+  border-radius: 10px;
 }
 
 .card h3 {
   background: var(--secondary-color);
-  color: var(--text-color);
+  color: white;
   padding: 0.5rem;
   margin-top: 0;
 }
@@ -139,10 +162,15 @@ main {
 }
 
 .member {
-  background: #fff;
+  background: white;
   padding: 1rem;
   border-radius: 10px;
   text-align: center;
+}
+
+.member img {
+  width: 100%;
+  height: auto;
 }
 
 /* BUTTONS */
@@ -167,39 +195,3 @@ footer {
   background: var(--primary-color);
   padding: 2rem;
 }
-.active {
-  background: #333;
-  color: white !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-}
-.navigation a.active {
-  background-color: #333;
-  color: white;
-  border-radius: 5px;
-  padding: 8px 12px;
-}
-.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.dark-mode header,
-.dark-mode footer {
-  background-color: #1e1e1e;
-}
-
-.dark-mode .card,
-.dark-mode .member {
-  background-color: #2d2d2d;
-  color: #ffffff;
-}
-
-.dark-mode a {
-  color: #ffffff;
-}
-
-.card h3 {
-  background-color: #333;
-  color: #ffffff;
-
