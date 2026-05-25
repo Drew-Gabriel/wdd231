@@ -195,3 +195,13 @@ footer {
   background: var(--primary-color);
   padding: 2rem;
 }
+.navigation .active {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.navigation .active a {
+    color: white !important;
+    text-decoration: none;
+}
