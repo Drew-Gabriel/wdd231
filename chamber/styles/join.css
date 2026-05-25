@@ -4,12 +4,27 @@
     margin-top: 2rem;
 }
 
-.card {
+.membership-cards .card {
+    background: white;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 10px;
+    text-align: center;
 
     animation: fadein 1.5s ease-in-out;
+}
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
 }
 
 @keyframes fadein {
