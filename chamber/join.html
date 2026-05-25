@@ -124,6 +124,64 @@ name="timestamp">
 value="Submit Application">
 
 </form>
+  <section class="membership-cards">
+
+<div class="card">
+<h3>NP Membership</h3>
+<p>Free for nonprofit organizations.</p>
+<a href="#" onclick="document.getElementById('npModal').showModal()">
+Learn More
+</a>
+</div>
+
+<div class="card">
+<h3>Bronze Membership</h3>
+<p>Entry level membership benefits.</p>
+<a href="#" onclick="document.getElementById('bronzeModal').showModal()">
+Learn More
+</a>
+</div>
+
+<div class="card">
+<h3>Silver Membership</h3>
+<p>Extra advertising and event discounts.</p>
+<a href="#" onclick="document.getElementById('silverModal').showModal()">
+Learn More
+</a>
+</div>
+
+<div class="card">
+<h3>Gold Membership</h3>
+<p>Premium benefits and spotlight features.</p>
+<a href="#" onclick="document.getElementById('goldModal').showModal()">
+Learn More
+</a>
+</div>
+
+</section>
+  <dialog id="npModal">
+<h2>NP Membership</h2>
+<p>No fee for nonprofit organizations.</p>
+<button onclick="npModal.close()">Close</button>
+</dialog>
+
+<dialog id="bronzeModal">
+<h2>Bronze Membership</h2>
+<p>Basic networking opportunities and events.</p>
+<button onclick="bronzeModal.close()">Close</button>
+</dialog>
+
+<dialog id="silverModal">
+<h2>Silver Membership</h2>
+<p>Advertising and event discounts included.</p>
+<button onclick="silverModal.close()">Close</button>
+</dialog>
+
+<dialog id="goldModal">
+<h2>Gold Membership</h2>
+<p>Premium advertising and spotlight placement.</p>
+<button onclick="goldModal.close()">Close</button>
+</dialog>
 
 </main>
 
