@@ -64,3 +64,4 @@ visitMessage.textContent =
 }
 
 localStorage.setItem("lastVisit", now);
+document.getElementById("currentyear").textContent = new Date().getFullYear();
