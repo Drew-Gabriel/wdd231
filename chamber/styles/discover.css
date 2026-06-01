@@ -1,6 +1,89 @@
 #visit-message{
-background:#ddd;
-padding:1rem;
+#visit-message {
+    background: #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+/* =========================
+   GRID BASE (MOBILE FIRST)
+========================= */
+
+.discover-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+        "one"
+        "two"
+        "three"
+        "four"
+        "five"
+        "six"
+        "seven"
+        "eight";
+}
+
+/* Assign grid areas to cards */
+.card:nth-child(1) { grid-area: one; }
+.card:nth-child(2) { grid-area: two; }
+.card:nth-child(3) { grid-area: three; }
+.card:nth-child(4) { grid-area: four; }
+.card:nth-child(5) { grid-area: five; }
+.card:nth-child(6) { grid-area: six; }
+.card:nth-child(7) { grid-area: seven; }
+.card:nth-child(8) { grid-area: eight; }
+
+/* =========================
+   CARD DESIGN
+========================= */
+
+.discover-grid .card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* =========================
+   MEDIUM VIEW (2 columns)
+========================= */
+
+@media (min-width: 641px) {
+
+    .discover-grid {
+        grid-template-areas:
+            "one two"
+            "three four"
+            "five six"
+            "seven eight";
+    }
+
+    .card img:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* =========================
+   LARGE VIEW (creative layout)
+========================= */
+
+@media (min-width: 1025px) {
+
+    .discover-grid {
+        grid-template-areas:
+            "one one two two"
+            "three four five six"
+            "seven seven eight eight";
+    }
+}padding:1rem;
 margin-bottom:1rem;
 border-radius:8px;
 }
