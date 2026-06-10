@@ -2,17 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Form</title>
+  <title>Submit Your Favorite Food</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<h1>Submit Your Favorite Food</h1>
+<header>
+  <h1>Submit Your Favorite Food</h1>
+</header>
 
-<form action="form-action.html" method="GET">
-  <input name="name" placeholder="Your Name" required>
-  <input name="food" placeholder="Favorite Food" required>
-  <button type="submit">Submit</button>
-</form>
+<main class="form-container">
+
+  <form action="form-action.html" method="GET" class="form-box">
+
+    <label>
+      Your Name
+      <input type="text" name="name" placeholder="Enter your name" required>
+    </label>
+
+    <label>
+      Favorite Food
+      <input type="text" name="food" placeholder="Enter your favorite food" required>
+    </label>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</main>
 
 </body>
 </html>
