@@ -4,26 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>My Food Website</title>
-  <meta name="description" content="A simple food recipe website">
+  <title>Nigerian Food Recipes</title>
+  <meta name="description" content="A responsive website showcasing Nigerian food recipes with dynamic JavaScript features.">
   <meta name="author" content="Your Name">
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:title" content="Nigerian Food Recipes">
+  <meta property="og:description" content="Explore delicious Nigerian meals with recipes and details.">
+  <meta property="og:type" content="website">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <h1>My Food Website</h1>
+    <h1>Nigerian Food Recipes</h1>
+
+    <!-- Navigation -->
+    <nav>
+      <button id="menu" aria-label="Toggle menu">☰</button>
+
+      <ul id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="form.html">Form</a></li>
+      </ul>
+    </nav>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main>
-    <h2>Welcome</h2>
-    <p>This is my project website.</p>
+
+    <section>
+      <h2>Recipe Collection</h2>
+      <p>Explore traditional Nigerian meals with full details.</p>
+    </section>
+
+    <!-- Dynamic content goes here -->
+    <section id="recipeContainer"></section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2026 My Website</p>
+    <p>© 2026 Nigerian Food Recipes</p>
+
+    <!-- REQUIRED FOR PROJECT LATER -->
+    <p><a href="attributions.html">Attributions</a></p>
+    <p><a href="#">Watch Video Demo</a></p>
   </footer>
+
+  <!-- JAVASCRIPT (ES MODULE REQUIRED) -->
+  <script type="module" src="js/main.js"></script>
 
 </body>
 </html>
