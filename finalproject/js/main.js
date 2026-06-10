@@ -1,6 +1,7 @@
 const container = document.querySelector("#recipeContainer");
 let recipesData = [];
 
+// FETCH DATA
 async function loadRecipes() {
   try {
     const res = await fetch("./data/recipes.json");
@@ -13,6 +14,7 @@ async function loadRecipes() {
 
 loadRecipes();
 
+// DISPLAY RECIPES
 function displayRecipes(data) {
   container.innerHTML = "";
 
@@ -21,7 +23,7 @@ function displayRecipes(data) {
     card.classList.add("card");
 
     card.innerHTML = `
-      <img src="images/${recipe.image}" loading="lazy">
+      <img src="images/${recipe.image}" loading="lazy" alt="${recipe.name}">
       <h3>${recipe.name}</h3>
       <p>${recipe.region}</p>
       <p>${recipe.time}</p>
@@ -33,24 +35,37 @@ function displayRecipes(data) {
   });
 }
 
-function openModal(id) {
+// ✅ FIXED MODAL (IMPORTANT PART)
+window.openModal = function (id) {
   const recipe = recipesData.find(r => r.id === id);
   if (!recipe) return;
+
+  const oldModal = document.querySelector(".modal");
+  if (oldModal) oldModal.remove();
 
   const modal = document.createElement("div");
   modal.classList.add("modal");
 
   modal.innerHTML = `
     <div class="modal-content">
-      <span onclick="this.parentElement.parentElement.remove()">X</span>
+      <span onclick="this.parentElement.parentElement.remove()">&times;</span>
       <h2>${recipe.name}</h2>
-      <p>${recipe.ingredients}</p>
+      <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+      <p><strong>Region:</strong> ${recipe.region}</p>
+      <p><strong>Time:</strong> ${recipe.time}</p>
+      <p><strong>Difficulty:</strong> ${recipe.difficulty}</p>
     </div>
   `;
 
   document.body.appendChild(modal);
-}
+};
 
-document.querySelector("#menu").addEventListener("click", () => {
-  document.querySelector("#navLinks").classList.toggle("show");
+// HAMBURGER MENU
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector("#menu");
+  const navLinks = document.querySelector("#navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
 });
