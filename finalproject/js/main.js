@@ -14,7 +14,7 @@ async function loadRecipes() {
 
 loadRecipes();
 
-// DISPLAY RECIPES
+// DISPLAY ITEMS
 function displayRecipes(data) {
   container.innerHTML = "";
 
@@ -23,7 +23,7 @@ function displayRecipes(data) {
     card.classList.add("card");
 
     card.innerHTML = `
-      <img src="images/${recipe.image}" loading="lazy" alt="${recipe.name}">
+      <img src="images/${recipe.image}" loading="lazy">
       <h3>${recipe.name}</h3>
       <p>${recipe.region}</p>
       <p>${recipe.time}</p>
@@ -35,13 +35,13 @@ function displayRecipes(data) {
   });
 }
 
-// ✅ FIXED MODAL (IMPORTANT PART)
+// FIXED MODAL (IMPORTANT)
 window.openModal = function (id) {
   const recipe = recipesData.find(r => r.id === id);
   if (!recipe) return;
 
-  const oldModal = document.querySelector(".modal");
-  if (oldModal) oldModal.remove();
+  const old = document.querySelector(".modal");
+  if (old) old.remove();
 
   const modal = document.createElement("div");
   modal.classList.add("modal");
@@ -60,12 +60,9 @@ window.openModal = function (id) {
   document.body.appendChild(modal);
 };
 
-// HAMBURGER MENU
+// MENU
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector("#menu");
-  const navLinks = document.querySelector("#navLinks");
-
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
+  document.querySelector("#menu").addEventListener("click", () => {
+    document.querySelector("#navLinks").classList.toggle("show");
   });
 });
