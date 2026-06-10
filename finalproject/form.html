@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Submit Your Favorite Food</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Submit your favorite Nigerian food">
+  <meta name="author" content="Your Name">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,7 +17,9 @@
   <h1>Submit Your Favorite Food</h1>
 
   <nav>
-    <ul>
+    <button id="menu">☰</button>
+
+    <ul id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="form.html">Form</a></li>
@@ -27,12 +33,20 @@
 
     <label>
       Your Name
-      <input type="text" name="name" placeholder="Enter your name" required>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        required>
     </label>
 
     <label>
       Favorite Food
-      <input type="text" name="food" placeholder="Enter your favorite food" required>
+      <input
+        type="text"
+        name="food"
+        placeholder="Enter your favorite food"
+        required>
     </label>
 
     <button type="submit">Submit</button>
@@ -47,6 +61,8 @@
   <a href="attributions.html">Attributions</a> |
   <a href="#">Project Video (Coming Soon)</a>
 </footer>
+
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>
