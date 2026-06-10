@@ -1,1 +1,137 @@
-
+[
+  {
+    "id": 1,
+    "name": "Jollof Rice",
+    "region": "West Africa",
+    "time": "45 mins",
+    "difficulty": "Medium",
+    "ingredients": "Rice, tomato, pepper, onion",
+    "image": "jollof.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Egusi Soup",
+    "region": "Nigeria",
+    "time": "60 mins",
+    "difficulty": "Hard",
+    "ingredients": "Melon seed, spinach, meat, oil",
+    "image": "egusi.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Pounded Yam",
+    "region": "Nigeria",
+    "time": "40 mins",
+    "difficulty": "Medium",
+    "ingredients": "Yam, water",
+    "image": "poundedyam.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Amala",
+    "region": "Southwest Nigeria",
+    "time": "30 mins",
+    "difficulty": "Easy",
+    "ingredients": "Yam flour, water",
+    "image": "amala.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Suya",
+    "region": "Northern Nigeria",
+    "time": "25 mins",
+    "difficulty": "Easy",
+    "ingredients": "Beef, pepper spice, peanut powder",
+    "image": "suya.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Moi Moi",
+    "region": "Nigeria",
+    "time": "50 mins",
+    "difficulty": "Medium",
+    "ingredients": "Beans, pepper, oil, fish",
+    "image": "moi-moi.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Fried Rice",
+    "region": "Nigeria",
+    "time": "40 mins",
+    "difficulty": "Medium",
+    "ingredients": "Rice, vegetables, chicken",
+    "image": "friedrice.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Bitterleaf Soup",
+    "region": "Igbo Land",
+    "time": "70 mins",
+    "difficulty": "Hard",
+    "ingredients": "Bitterleaf, meat, spices",
+    "image": "bitterleaf.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Akara",
+    "region": "Nigeria",
+    "time": "20 mins",
+    "difficulty": "Easy",
+    "ingredients": "Beans, oil, pepper",
+    "image": "akara.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Eba",
+    "region": "Nigeria",
+    "time": "15 mins",
+    "difficulty": "Easy",
+    "ingredients": "Garri, water",
+    "image": "eba.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Oha Soup",
+    "region": "South East Nigeria",
+    "time": "65 mins",
+    "difficulty": "Hard",
+    "ingredients": "Oha leaves, meat, spices",
+    "image": "oha.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Okra Soup",
+    "region": "Nigeria",
+    "time": "50 mins",
+    "difficulty": "Medium",
+    "ingredients": "Okra, meat, palm oil",
+    "image": "okra.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Pepper Soup",
+    "region": "Nigeria",
+    "time": "35 mins",
+    "difficulty": "Easy",
+    "ingredients": "Fish/meat, pepper spices",
+    "image": "peppersoup.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Plantain Chips",
+    "region": "Nigeria",
+    "time": "25 mins",
+    "difficulty": "Easy",
+    "ingredients": "Plantain, oil, salt",
+    "image": "plantainchips.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Nkwobi",
+    "region": "Igbo Cuisine",
+    "time": "60 mins",
+    "difficulty": "Hard",
+    "ingredients": "Cow foot, palm oil, spices",
+    "image": "nkwobi.jpg"
+  }
+]
