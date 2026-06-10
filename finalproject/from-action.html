@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Form Result</title>
 </head>
 <body>
@@ -10,7 +11,8 @@
 
   document.body.innerHTML = `
     <h1>Thank you ${params.get("name")}</h1>
-    <p>You love ${params.get("food")}</p>
+    <p>Your favorite food is: ${params.get("food")}</p>
+    <a href="index.html">Go back home</a>
   `;
 </script>
 
