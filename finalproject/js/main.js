@@ -3,12 +3,14 @@ let recipesData = [];
 
 // FETCH DATA
 async function loadRecipes() {
+  if (!container) return;
+
   try {
     const res = await fetch("./data/recipes.json");
     recipesData = await res.json();
     displayRecipes(recipesData);
   } catch (err) {
-    console.error(err);
+    console.error("Error loading recipes:", err);
   }
 }
 
@@ -23,7 +25,7 @@ function displayRecipes(data) {
     card.classList.add("card");
 
     card.innerHTML = `
-      <img src="images/${recipe.image}" loading="lazy">
+      <img src="images/${recipe.image}" alt="${recipe.name}" loading="lazy">
       <h3>${recipe.name}</h3>
       <p>${recipe.region}</p>
       <p>${recipe.time}</p>
@@ -35,13 +37,14 @@ function displayRecipes(data) {
   });
 }
 
-// FIXED MODAL (IMPORTANT)
-window.openModal = function (id) {
+// MODAL
+window.openModal = function(id) {
   const recipe = recipesData.find(r => r.id === id);
+
   if (!recipe) return;
 
-  const old = document.querySelector(".modal");
-  if (old) old.remove();
+  const oldModal = document.querySelector(".modal");
+  if (oldModal) oldModal.remove();
 
   const modal = document.createElement("div");
   modal.classList.add("modal");
@@ -49,7 +52,9 @@ window.openModal = function (id) {
   modal.innerHTML = `
     <div class="modal-content">
       <span onclick="this.parentElement.parentElement.remove()">&times;</span>
+
       <h2>${recipe.name}</h2>
+
       <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
       <p><strong>Region:</strong> ${recipe.region}</p>
       <p><strong>Time:</strong> ${recipe.time}</p>
@@ -60,9 +65,14 @@ window.openModal = function (id) {
   document.body.appendChild(modal);
 };
 
-// MENU
+// HAMBURGER MENU
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#menu").addEventListener("click", () => {
-    document.querySelector("#navLinks").classList.toggle("show");
-  });
+  const menuButton = document.querySelector("#menu");
+  const navLinks = document.querySelector("#navLinks");
+
+  if (menuButton && navLinks) {
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  }
 });
